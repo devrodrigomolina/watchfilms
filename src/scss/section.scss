@@ -1,0 +1,93 @@
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  box-shadow: 0 14px 18px rgba(0, 0, 0, 0.2);
+  .bg-inpt {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 1600px;
+    padding-top: 150px;
+    margin: 0 auto;
+    height: 600px;
+    background-image: url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/sfjqJDmNqMIImO5khiddb9TARvO.jpg');
+    .infos-inpt {
+      margin-left: 50px;
+      color: white;
+      font-size: 1.3rem;
+    }
+    .input-search {
+      width: 100%;
+      max-width: 1500px;
+      position: relative;
+      margin: 0 auto;
+      input {
+        width: 100%;
+        max-width: 1500px;
+        margin: 40px auto 0;
+        outline: none;
+        border: none;
+        border-radius: 30px;
+        height: 45px;
+        font-size: 1.1rem;
+        padding-left: 15px;
+      }
+      button {
+        position: absolute;
+        top: 40px;
+        left: 1350px;
+        padding: 15px;
+        background: rgb(30,213,169);
+        cursor: pointer;
+        border-radius: 50px;
+        border: none;
+        width: 10%;
+      }
+    }
+    .films-search {
+      display: flex;
+      flex-direction: column;
+      padding-top: 10px;
+      width: 1470px;
+      max-height: 250px;
+      text-align: justify;
+      margin: 0 auto;
+      box-shadow: 0 14px 18px rgba(0, 0, 0, 0.336);
+      overflow-x: hidden;
+      background: rgb(255, 255, 255);
+      .results {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(39, 38, 38, 0.233);
+        display: flex;
+        img {
+          width: 50px;
+          margin: 7px 0 7px 7px;
+          cursor: pointer;
+        }
+        p {
+          width: 100%;
+          font-size: 1.2rem;
+          padding-left: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .title-popular {
+    margin: 30px 0;
+    padding-left: 20px;
+  }
+  .popular-filmes {
+    display: grid;
+    grid-template-columns: 230px 230px 230px 230px 230px 230px;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    img {
+      width: 200px;
+    }
+    p {
+      max-width: 200px;
+    }
+  }
+}
