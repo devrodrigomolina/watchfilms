@@ -80,25 +80,38 @@
   }
   .popular-filmes {
     display: flex;
-    overflow: visible;
     margin: 0px 20px;
     overflow-x: scroll;
     overflow-y: hidden;
-    
+    &::-webkit-scrollbar {
+      width: 10px;    
+    }
+    &::-webkit-scrollbar-track {
+      background: #ffffff;    
+      border: 2px solid gray;
+      border-radius: 50px; 
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #032038;    
+      border-radius: 50px;       
+    }
     .cards-films{
       background: transparent;
       border: none;
       box-shadow: none;
       padding-left: 10px;
+      border: 2px solid white ;
       img {
-        width: 200px;
+        width: 150px;
         border-radius: 7px;
-
-       }
-       p {
-         height: auto;
+        cursor: pointer;
+      }
+      p {
+        max-width: 150px;
+        max-height: 55px;
         text-align: center;
-       }
+        text-transform: capitalize;
+      }
     }
   }
 }

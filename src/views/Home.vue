@@ -23,7 +23,7 @@
     <h1 class="title-popular">Os mais populares</h1>
     <div class="popular-filmes">
       <div class="cards-films" v-for="result2 in recomendedFilms.results" :key="result2.id">
-        <img :src="'http://image.tmdb.org/t/p/w500/' + result2.poster_path" alt="">
+        <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
         <p>{{result2.original_title}}</p>
       </div>
     </div>
@@ -67,7 +67,5 @@ export default {
 }
 </script>
 
-<style
-lang="scss"
-src="@/scss/section.scss">
+<style scoped lang="scss" src="@/scss/home.scss">
 </style>

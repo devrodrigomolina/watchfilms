@@ -1,0 +1,28 @@
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  margin: 0 auto;
+  background: rgb(37, 21, 97);
+  text-transform: uppercase;
+  padding: 15px;
+  .logo img {
+    width: 180px;
+  }
+  ul {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    li {
+      color: white;
+    }
+  }
+  .itens {    
+    color: white;
+    span {
+      padding: 12px;
+    }
+  }
+}
