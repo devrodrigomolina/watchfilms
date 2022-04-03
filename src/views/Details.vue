@@ -1,14 +1,23 @@
 <template>
   <div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At consequatur sequi pariatur earum, dolores dicta, aliquid consectetur similique quaerat rem facilis. Aliquam praesentium laboriosam totam, et dolorum est dolores saepe.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At consequatur sequi pariatur earum, dolores dicta, aliquid consectetur similique quaerat rem facilis. Aliquam praesentium laboriosam totam, et dolorum est dolores saepe.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At consequatur sequi pariatur earum, dolores dicta, aliquid consectetur similique quaerat rem facilis. Aliquam praesentium laboriosam totam, et dolorum est dolores saepe.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At consequatur sequi pariatur earum, dolores dicta, aliquid consectetur similique quaerat rem facilis. Aliquam praesentium laboriosam totam, et dolorum est dolores saepe.</p>
+    <div v-for="infos in infosFilm" :key="infos.id">
+      <div class="container">
+        <div class="infos-film">
+          {{infos}}
+        </div>
+        <div class="img-fundo">
+          <img :src="`http://image.tmdb.org/t/p/w500/${infos.backdrop_path}`" alt="">
+        </div>
+      </div>
+    
+    </div>
   </div>
  
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Details',
   data() {
@@ -18,19 +27,29 @@ export default {
   },
   methods: {
     getInfosFilm(id) {    
-      axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=e161437dd0afeb088fc7bc77be4d32bc`)
+      axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=pt-br`)
       .then(response => {
-      this.$router.push('/details')
-      this.infosFilm.push(response.data)
-    })
+        this.infosFilm.push(response.data)
+      })
     },
   },
   mounted() {
-    console.log('a', this.route.params)
+    this.getInfosFilm(this.$route.params.id)
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+.container {
 
+  .infos-film {
+    position: absolute;
+  }
+  .img-fundo{
+    width: 100%;
+    img {
+      filter: blur(4px);
+    }
+  }
+}
 </style>

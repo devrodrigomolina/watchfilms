@@ -79,15 +79,26 @@
     padding-left: 20px;
   }
   .popular-filmes {
-    display: grid;
-    grid-template-columns: 230px 230px 230px 230px 230px 230px;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    img {
-      width: 200px;
-    }
-    p {
-      max-width: 200px;
+    display: flex;
+    overflow: visible;
+    margin: 0px 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    
+    .cards-films{
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding-left: 10px;
+      img {
+        width: 200px;
+        border-radius: 7px;
+
+       }
+       p {
+         height: auto;
+        text-align: center;
+       }
     }
   }
 }
