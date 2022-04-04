@@ -1,0 +1,52 @@
+.container-geral {
+  .img-fundo{
+    width: 100vw;
+    .color-img {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.767);
+      width: 100%;
+      height: 600px;
+    }
+    img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    height: 500px;
+    position: absolute;
+    left: 270px;
+    .container-infos {
+      display: flex;
+      z-index: 3;
+      color: #FFF;
+      .img-film {
+        width: 300px;
+        padding-right: 25px;
+        img {
+          width: 100%;
+        }
+      }
+      .infos-film {
+        width: 800px;
+        .titulo {
+          font-size: 1.5rem;
+        }
+        .infos {
+          display: flex;
+          p {
+            padding: 0px 8px 28px 0;
+          }
+        }
+        .sinopse {
+          h2 {
+            padding: 0 0 20px 0;
+          }
+        }
+      }
+    }
+  }
+}

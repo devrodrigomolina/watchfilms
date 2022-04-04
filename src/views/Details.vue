@@ -1,35 +1,43 @@
 <template>
   <div>
-    <div v-for="infos in infosFilm" :key="infos.id">
+    <div class="container-geral" v-for="infos in infosFilm" :key="infos.id">
       <div class="container">
         <div class="container-infos">
           <div class="img-film">
             <img :src="`http://image.tmdb.org/t/p/w500/${infos.poster_path}`" alt="">
           </div>
+
           <div class="infos-film">
             <div class="titulo">
               <h1>{{infos.title}}</h1>
             </div>
+
             <div class="infos">
-              <p>{{infos.release_date}} -</p>
-              <p class="genres" v-for="genres in infos.genres" :key="genres.id">{{genres.name}}</p>
+              <p>{{infos.release_date}}</p>
+              <p class="genres" v-for="genres in infos.genres" :key="genres.id">
+                <a href="#">{{genres.name}}</a>
+              </p>
+              <p>{{infos.vote_average}}</p>
             </div>
             <div class="sinopse">
+              <h2>Sinopse</h2>
               {{infos.overview}}
             </div>
           </div>
         </div>
-
-
-
-
-        <div class="img-fundo">
-          <div class="color-img"></div>
-          <img :src="`http://image.tmdb.org/t/p/w500/${infos.backdrop_path}`" alt="">
-        </div>
       </div>
-    
+
+      <div class="img-fundo">
+        <div class="color-img"></div>
+        <img :src="`http://image.tmdb.org/t/p/w500/${infos.backdrop_path}`" alt="">
+      </div>
+
+      <div class="mais-infosfilm" >
+        {{infos}}
+      </div>
+
     </div>
+
   </div>
  
 </template>
@@ -58,53 +66,6 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" >
+<style scoped lang="scss" src="@/scss/details.scss">
 
-.container {
-  .container-infos {
-    width: 1100px;
-    height: 600px;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 60px;
-    position: absolute;
-    z-index: 3;
-    color: #FFF;
- 
-    .img-film {
-      width: 300px;
-      img {
-        width: 100%;
-      }
-    }
-    .infos-film {
-      width: 600px;
-      .titulo {
-
-      }
-      .infos {
-        width: 220px;
-        display: flex;
-        justify-content: space-between;
-      }
-      .sinopse {
-        margin-top: 20px;
-      }
-    }
-  }
-  .img-fundo{
-    width: 100%;
-    .color-img {
-      position: absolute;
-      background: rgba(0, 0, 0, 0.767);
-      width: 100%;
-      height: 600px;
-    }
-    img {
-      width: 100%;
-      height: 600px;
-      object-fit: cover;
-    }
-  }
-}
 </style>
