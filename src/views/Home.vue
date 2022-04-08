@@ -22,14 +22,12 @@
     <div class="selects">
       <h1 class="title-popular">Os mais populares</h1>
       <ul>
-        <li @click="showPopulars()">Populares</li>
-        <li @click="showEvaluated()">Mais Avaliados</li>
-        <li>Para Alugar</li>
-        <li>Nos Cinemas</li>
+        <li @click="showPopular = true">Populares</li>
+        <li @click="showPopular = false">Mais Avaliados</li>
       </ul>
     </div>
-    <div class="popular-filmes">
-      <div class="cards-films" v-for="result2 in this.a.evaluatedFilms" :key="result2.id"> <!-- MEXER AQUI NESSA PORRA =D -->
+    <div class="popular-filmes" v-if="showPopular">
+      <div class="cards-films" v-for="result2 in b" :key="result2.id"> <!-- MEXER AQUI NESSA PORRA =D -->
         <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
         <p>{{result2.original_title}}</p>
       </div>
@@ -46,12 +44,21 @@ export default {
       query: '',
       results: '',
       filmes: null,
+      showPopular: true,
+      b: null,
       a: {popularsFilms: null, evaluatedFilms: null,},
       id: '',
     }
   },
   watch: {
-
+    showPopular(newValue) {
+      if(newValue == true) {
+        this.b = this.a.popularsFilms
+      }else {
+        this.showEvaluated()
+        this.b = this.a.evaluatedFilms
+      }
+    }
   },
   methods: {
     searchFilm(query) {
