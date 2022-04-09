@@ -78,68 +78,38 @@
     display: flex;
     padding-left: 35px;
     .title-popular {
-      border: 1px solid red;
+      margin-top: 15px;
     }
-    
     ul {
       border: 2px solid #032541;
       border-radius: 50px;
-      width: 400px;
+      width: 250px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       list-style: none;
-      
+      margin: 15px 20px;
       li {
+        cursor: pointer;
         background: #032541;
         padding: 10px;
         border: none;
         border-radius: 50px;
-        color: #1D7E77;
+        color: white;
         text-transform: uppercase;
         font-size: 12px;
-        font-weight: bold;
-      }
+        font-weight: 500;
+        &:hover {
+          background-color: #021627;
+        }
+        &:active  {
+          background: red;
+        }
+      } 
       
     }
   }
   .popular-filmes {
-    display: flex;
-    margin: 0px 20px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    &::-webkit-scrollbar {
-      width: 10px;    
-    }
-    &::-webkit-scrollbar-track {
-      background: #ffffff;    
-      border: 2px solid gray;
-      border-radius: 50px; 
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: #032038;    
-      border-radius: 50px;       
-    }
-    .cards-films{
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      padding-left: 10px;
-      border: 2px solid white ;
-      img {
-        width: 150px;
-        border-radius: 7px;
-        cursor: pointer;
-      }
-      p {
-        max-width: 150px;
-        max-height: 55px;
-        text-align: center;
-        text-transform: capitalize;
-      }
-    }
-  }
-  .evaluatedFilms-filmes {
     display: flex;
     margin: 0px 20px;
     overflow-x: scroll;

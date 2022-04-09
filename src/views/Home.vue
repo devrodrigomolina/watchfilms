@@ -22,12 +22,13 @@
     <div class="selects">
       <h1 class="title-popular">Os mais populares</h1>
       <ul>
-        <li @click="showPopular = true">Populares</li>
-        <li @click="showPopular = false">Mais Avaliados</li>
+        <li @click="showPopulars()">Populares</li>
+        <li @click="showEvaluated()">Mais Avaliados</li>
       </ul>
     </div>
-    <div class="popular-filmes" v-if="showPopular">
-      <div class="cards-films" v-for="result2 in b" :key="result2.id"> <!-- MEXER AQUI NESSA PORRA =D -->
+ 
+    <div class="popular-filmes">
+      <div class="cards-films" v-for="result2 in objFinal" :key="result2.id"> <!-- MEXER AQUI =D -->
         <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
         <p>{{result2.original_title}}</p>
       </div>
@@ -44,19 +45,19 @@ export default {
       query: '',
       results: '',
       filmes: null,
-      showPopular: true,
-      b: null,
-      a: {popularsFilms: null, evaluatedFilms: null,},
+      showPopular: null,
+      objFinal: null,
+      objsCategory: {popularsFilms: null, evaluatedFilms: null,},
       id: '',
     }
   },
   watch: {
     showPopular(newValue) {
       if(newValue == true) {
-        this.b = this.a.popularsFilms
-      }else {
+        this.objFinal = this.objsCategory.popularsFilms
+      }else{
+        this.objFinal = this.objsCategory.evaluatedFilms
         this.showEvaluated()
-        this.b = this.a.evaluatedFilms
       }
     }
   },
@@ -73,13 +74,15 @@ export default {
     showEvaluated() {
       axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       .then(response => {
-        this.a.evaluatedFilms = response.data.results
+        this.showPopular = false
+        this.objsCategory.evaluatedFilms = response.data.results
       })
     },
     showPopulars() {
       axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       .then(response => {
-        this.a.popularsFilms = response.data.results
+        this.showPopular = true
+        this.objsCategory.popularsFilms = response.data.results
       })
     },
   },
