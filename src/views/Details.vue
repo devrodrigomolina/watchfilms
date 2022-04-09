@@ -32,8 +32,14 @@
         <img :src="`http://image.tmdb.org/t/p/w500/${infos.backdrop_path}`" alt="">
       </div>
 
-      <div class="mais-infosfilm" >
-        {{infos}}
+      <div class="titulo-elenc">
+        <h1>Elenco Principal</h1>
+      </div>
+      <div class="elenco">     
+        <div class="infos-elenc" v-for="elenc in elencFilm[0].cast" :key="elenc.id">
+          <img :src="`http://image.tmdb.org/t/p/w500/${elenc.profile_path}`" alt="">
+          <p>{{elenc.original_name}}</p>
+        </div>
       </div>
 
     </div>
@@ -43,25 +49,29 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { api } from '@/services/api.js'
 
 export default {
   name: 'Details',
   data() {
     return {
-      infosFilm: []
+      infosFilm: [],
+      elencFilm: []
     }
   },
   methods: {
-    getInfosFilm(id) {    
-      axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=pt-br`)
-      .then(response => {
-        this.infosFilm.push(response.data)
-      })
+    async getInfosFilm(id) {
+      let response = await api.get(`/movie/${id}?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=pt-br`)      
+      this.infosFilm.push(response.data)
     },
+    async getElencFilm(id) {
+      let response = await api.get(`/movie/${id}/credits?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US`)
+      this.elencFilm.push(response.data)
+    }
   },
   mounted() {
     this.getInfosFilm(this.$route.params.id)
+    this.getElencFilm(this.$route.params.id)
   }
 }
 </script>

@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import { api } from '@/services/api.js'
 
 export default {
@@ -59,19 +58,19 @@ export default {
   },
   methods: {
     async searchFilm(query) {
-      let response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
+      let response = await api.get(`/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
       this.results = response.data.results
     },
     getInfosFilm(id) {
       this.$router.push({ name: 'details', params: { id } })
     },
     async showEvaluated() {
-      let response = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
+      let response = await api.get('/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       this.objsCategory.evaluatedFilms = response.data.results
       this.showPopular = false
     },
     async showPopulars() {
-      let response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
+      let response = await api.get('/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       this.objsCategory.popularsFilms = response.data.results
       this.showPopular = true
     },

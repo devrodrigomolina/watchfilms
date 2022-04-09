@@ -49,4 +49,26 @@
       }
     }
   }
+  .titulo-elenc {
+    text-align: center;
+    padding: 20px;
+  }
+  .elenco {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    box-shadow: 1px 1px 10px 1px #0216274b;
+    text-align: center;
+    .infos-elenc {
+      padding: 20px;
+      
+      img {
+        box-shadow: 1px 1px 10px 1px #0216274b;
+        width: 150px;
+      }
+    }
+  }
 }
