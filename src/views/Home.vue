@@ -38,6 +38,7 @@
 
 <script>
 import axios from 'axios'
+import { api } from '@/services/api.js'
 
 export default {
   data() {
@@ -52,38 +53,27 @@ export default {
     }
   },
   watch: {
-    showPopular(newValue) {
-      if(newValue == true) {
-        this.objFinal = this.objsCategory.popularsFilms
-      }else{
-        this.objFinal = this.objsCategory.evaluatedFilms
-        this.showEvaluated()
-      }
+    showPopular(value) {
+      value == true ? this.objFinal = this.objsCategory.popularsFilms : this.objFinal = this.objsCategory.evaluatedFilms
     }
   },
   methods: {
-    searchFilm(query) {
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
-      .then(response => {
-        this.results = response.data.results
-      })
+    async searchFilm(query) {
+      let response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
+      this.results = response.data.results
     },
     getInfosFilm(id) {
       this.$router.push({ name: 'details', params: { id } })
     },
-    showEvaluated() {
-      axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
-      .then(response => {
-        this.showPopular = false
-        this.objsCategory.evaluatedFilms = response.data.results
-      })
+    async showEvaluated() {
+      let response = await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
+      this.objsCategory.evaluatedFilms = response.data.results
+      this.showPopular = false
     },
-    showPopulars() {
-      axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
-      .then(response => {
-        this.showPopular = true
-        this.objsCategory.popularsFilms = response.data.results
-      })
+    async showPopulars() {
+      let response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
+      this.objsCategory.popularsFilms = response.data.results
+      this.showPopular = true
     },
   },
   created(){
