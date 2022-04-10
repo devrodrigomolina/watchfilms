@@ -38,7 +38,8 @@
       <div class="elenco">     
         <div class="infos-elenc" v-for="elenc in elencFilm[0].cast" :key="elenc.id">
           <img :src="`http://image.tmdb.org/t/p/w500/${elenc.profile_path}`" alt="">
-          <p>{{elenc.original_name}}</p>
+          <p class="elenc-name">{{elenc.original_name}}</p>
+          <p class="elenc-chatacter">{{elenc.character}}</p>
         </div>
       </div>
 

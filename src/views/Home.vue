@@ -19,6 +19,7 @@
         </div>
       </div>
     </div>
+    
     <div class="selects">
       <h1 class="title-popular">Os mais populares</h1>
       <ul>
@@ -26,12 +27,15 @@
         <li @click="showEvaluated()">Mais Avaliados</li>
       </ul>
     </div>
- 
+
     <div class="popular-filmes">
-      <div class="cards-films" v-for="result2 in objFinal" :key="result2.id"> <!-- MEXER AQUI =D -->
-        <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
-        <p>{{result2.original_title}}</p>
-      </div>
+      <transition>
+        <div class="cards-films"  v-for="result2 in objFinal" :key="result2.id" > <!-- MEXER AQUI =D -->
+          <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
+          <p>{{result2.original_title}}</p>
+        </div>
+      </transition>
+
     </div>
   </div>
 </template>
@@ -44,7 +48,6 @@ export default {
     return {
       query: '',
       results: '',
-      filmes: null,
       showPopular: null,
       objFinal: null,
       objsCategory: {popularsFilms: null, evaluatedFilms: null,},
@@ -66,8 +69,8 @@ export default {
     },
     async showEvaluated() {
       let response = await api.get('/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
-      this.objsCategory.evaluatedFilms = response.data.results
       this.showPopular = false
+      this.objsCategory.evaluatedFilms = response.data.results
     },
     async showPopulars() {
       let response = await api.get('/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
@@ -75,7 +78,7 @@ export default {
       this.showPopular = true
     },
   },
-  created(){
+  mounted(){
     this.showPopulars()
   }
 }

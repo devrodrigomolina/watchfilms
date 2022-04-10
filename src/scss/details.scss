@@ -51,23 +51,47 @@
   }
   .titulo-elenc {
     text-align: center;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
     padding: 20px;
   }
   .elenco {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
     align-items: center;
     max-width: 1500px;
+    overflow-y: hidden;
     margin: 0 auto;
-    box-shadow: 1px 1px 10px 1px #0216274b;
+    box-shadow: 1px 1px 10px 1px #0216272d;   
     text-align: center;
+    &::-webkit-scrollbar {
+      width: 10px;  
+      height: 12px;  
+    }
+    &::-webkit-scrollbar-track {
+      background: #ffffff;    
+      border: 2px solid gray;
+      border-radius: 50px; 
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #032038;    
+      border-radius: 50px;       
+    }
     .infos-elenc {
-      padding: 20px;
-      
+      margin: 10px;
+      box-shadow: 1px 1px 10px 1px #0216272f;
+      border-radius: 10px;
       img {
-        box-shadow: 1px 1px 10px 1px #0216274b;
+        border-radius: 10px;
         width: 150px;
+      }
+      .elenc-name {
+        font-weight: bold;
+        font-size: 15px;
+        color: #000;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+      .elenc-chatacter {
+        font-size: 13px;
       }
     }
   }
