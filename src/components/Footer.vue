@@ -21,6 +21,8 @@ export default {
   align-items: center;
   justify-content: center;
   color: white;
+  position: absolute;
+  top: 1300px;
   img {
     width: 150px;
   }

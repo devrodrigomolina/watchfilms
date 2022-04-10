@@ -96,3 +96,10 @@
     }
   }
 }
+
+.anim-enter {
+  opacity: 0;
+}
+.anim-enter-active {
+  transition: opacity .7s;
+}

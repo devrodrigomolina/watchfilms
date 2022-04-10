@@ -1,5 +1,6 @@
 <template>
   <div>
+    <transition name="anim">
     <div class="container-geral" v-for="infos in infosFilm" :key="infos.id">
       <div class="container">
         <div class="container-infos">
@@ -44,7 +45,7 @@
       </div>
 
     </div>
-
+    </transition>
   </div>
  
 </template>

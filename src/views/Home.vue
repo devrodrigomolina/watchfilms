@@ -12,11 +12,13 @@
       </div>
     
       <div class="films-search" v-if="query">
-        <div class="results" v-for="result in results" :key="result.id">
-          <img :src="`http://image.tmdb.org/t/p/w500/${result.poster_path}`">
-          <p @click="getInfosFilm(result.id)">{{result.title}}</p>
-          <p>{{result.id}}</p>
-        </div>
+        <transition-group name="anim" >
+          <div class="results" v-for="result in results" :key="result.id">
+            <img :src="`http://image.tmdb.org/t/p/w500/${result.poster_path}`">
+            <p @click="getInfosFilm(result.id)">{{result.title}}</p>
+            <p>{{result.id}}</p>
+          </div>
+        </transition-group>
       </div>
     </div>
     
