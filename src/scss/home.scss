@@ -10,7 +10,7 @@
     padding-top: 150px;
     margin: 0 auto;
     height: 500px;
-    background-image: url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/sfjqJDmNqMIImO5khiddb9TARvO.jpg');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.623), rgba(6, 13, 77, 0.452)), url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/sfjqJDmNqMIImO5khiddb9TARvO.jpg');
     .infos-inpt {
       margin-left: 50px;
       color: white;
@@ -36,12 +36,19 @@
         position: absolute;
         top: 40px;
         left: 1350px;
-        padding: 15px;
-        background: rgb(30,213,169);
+        height: 45px;
+        background: linear-gradient(to right,  rgba(30, 213, 170, 0.877), rgba(1, 180, 228, 0.452));
         cursor: pointer;
         border-radius: 50px;
         border: none;
         width: 10%;
+        font-weight: bold;
+        color: white;
+        font-size: 1rem;
+        transition: all .2s;
+        &:hover {
+          transform: scale(0.9);
+        }
       }
     }
     .films-search {
@@ -83,10 +90,9 @@
     ul {
       border: 2px solid #032541;
       border-radius: 50px;
-      width: 250px;
-      display: flex;
-      align-items: center;
+      width: 230px;
       justify-content: space-between;
+      display: flex;
       list-style: none;
       margin: 15px 20px;
       li {
@@ -99,8 +105,10 @@
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 500;
+        transition: all .3s;
         &:hover {
           background-color: #021627;
+          transform: scale(0.9);
         }
         &:active  {
           background: red;
@@ -114,13 +122,13 @@
     margin: 0px 20px;
     overflow-x: scroll;
     overflow-y: hidden;
-    .animation-anim {
+      .animation-anim {
       display: flex;
       .anim-enter {
         opacity: 0;
       }
       .anim-enter-active {
-        transition: opacity .7s;
+        transition: opacity 3s;
       }
     }
     &::-webkit-scrollbar {
@@ -140,11 +148,12 @@
       background: transparent;
       border: none;
       box-shadow: none;
-      padding-left: 10px;
-      border: 2px solid white ;
+      margin-top: 20px;
+      padding-left: 15px;
+      transition: all .3s;
       img {
         width: 150px;
-        border-radius: 7px;
+        border-radius: 10px;
         cursor: pointer;
       }
       p {
@@ -152,6 +161,9 @@
         max-height: 55px;
         text-align: center;
         text-transform: capitalize;
+      }
+      &:hover {
+        transform: scale(1.1);
       }
     }
 

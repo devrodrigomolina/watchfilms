@@ -7,8 +7,9 @@
       </div>
 
       <div class="input-search">
-        <input type="text" name="" id="" placeholder="Pesquisar por um filme, uma série televisiva, uma pessoa..." v-model="query" @keyup='searchFilm(query)'>
-        <button>Search</button>
+        <input type="text" name="" id="" placeholder="Pesquisar por um filme, uma série televisiva, uma pessoa..." v-model="query" v-on:keyup.enter="btnSearch(query)" @keyup='searchFilm(query)'>
+        <button @click="btnSearch(query)">Search</button>
+        {{results2}}
       </div>
     
       <div class="films-search" v-if="query">
@@ -49,6 +50,7 @@ export default {
     return {
       query: '',
       results: '',
+      results2: '',
       showPopular: null,
       objFinal: null,
       objsCategory: {popularsFilms: null, evaluatedFilms: null,},
@@ -64,6 +66,9 @@ export default {
     async searchFilm(query) {
       let response = await api.get(`/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
       this.results = response.data.results
+    },
+    async btnSearch(query) {
+      this.$router.push({ name: 'search', query: {query}})
     },
     getInfosFilm(id) {
       this.$router.push({ name: 'details', params: { id } })
