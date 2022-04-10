@@ -11,7 +11,7 @@
         <button>Search</button>
       </div>
     
-      <div class="films-search" v-if="query"> 
+      <div class="films-search" v-if="query">
         <div class="results" v-for="result in results" :key="result.id">
           <img :src="`http://image.tmdb.org/t/p/w500/${result.poster_path}`">
           <p @click="getInfosFilm(result.id)">{{result.title}}</p>
@@ -29,13 +29,12 @@
     </div>
 
     <div class="popular-filmes">
-      <transition>
+      <transition-group name="anim" class="animation-anim">
         <div class="cards-films"  v-for="result2 in objFinal" :key="result2.id" > <!-- MEXER AQUI =D -->
           <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
           <p>{{result2.original_title}}</p>
         </div>
-      </transition>
-
+      </transition-group>
     </div>
   </div>
 </template>
