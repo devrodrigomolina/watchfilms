@@ -40,6 +40,7 @@ export default {
   padding-top: 20px;
   max-width: 1500px;
   margin: 0 auto;
+  transition: all .3s;
   .infos {
     display: flex;
     padding-bottom: 10px;
@@ -66,6 +67,10 @@ export default {
         padding-top: 30px;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       }
+    }
+    &:hover {
+      
+      color: #0a5da1;
     }
   }
 }

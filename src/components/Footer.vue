@@ -14,7 +14,7 @@ export default {
 <style scoped lang="scss">
 .footer {
   width: 100vw;
-  height: 300px;
+  height: 200px;
   background: #032038;
   margin: 60px 0 0 -17px;
   display: flex;
@@ -22,9 +22,11 @@ export default {
   justify-content: center;
   color: white;
   position: absolute;
-  top: 1300px;
+
+
   img {
     width: 150px;
+    padding: 30px;
   }
 }
 </style>

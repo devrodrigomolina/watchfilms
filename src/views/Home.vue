@@ -25,10 +25,10 @@
     
     <div class="selects">
       <h1 class="title-popular">Os mais populares</h1>
-      <ul>
-        <li @click="showPopulars()">Populares</li>
-        <li @click="showEvaluated()">Mais Avaliados</li>
-      </ul>
+      <div class="botoes">
+        <button class="btn" @click="showPopulars()">Populares</button>
+        <button class="btn" @click="showEvaluated()">Mais Avaliados</button>
+      </div>
     </div>
 
     <div class="popular-filmes">
@@ -36,6 +36,8 @@
         <div class="cards-films"  v-for="result2 in objFinal" :key="result2.id" > <!-- MEXER AQUI =D -->
           <img @click="getInfosFilm(result2.id)" :src="`http://image.tmdb.org/t/p/w500/${result2.poster_path}`" alt="">
           <p>{{result2.original_title}}</p>
+          <p class="nota">★ {{result2.vote_average}}</p>
+          
         </div>
       </transition-group>
     </div>
@@ -63,6 +65,11 @@ export default {
     }
   },
   methods: {
+    addClassBtn() {
+      let btn = document.querySelector('.btn')
+      let btnSelected = btn.classList.add('actived')
+      return btnSelected
+    },
     async searchFilm(query) {
       let response = await api.get(`/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
       this.results = response.data.results
@@ -77,11 +84,13 @@ export default {
       let response = await api.get('/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       this.showPopular = false
       this.objsCategory.evaluatedFilms = response.data.results
+      this.addClassBtn()
     },
     async showPopulars() {
       let response = await api.get('/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       this.objsCategory.popularsFilms = response.data.results
       this.showPopular = true
+      this.addClassBtn()
     },
   },
   mounted(){
