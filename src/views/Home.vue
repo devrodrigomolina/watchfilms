@@ -67,7 +67,9 @@ export default {
   methods: {
     addClassBtn() {
       let btn = document.querySelector('.btn')
-      let btnSelected = btn.classList.add('actived')
+      console.log(btn)
+      let btnSelected = btn.classList.toggle("actived")
+      console.log(btnSelected)
       return btnSelected
     },
     async searchFilm(query) {
