@@ -95,9 +95,8 @@
       display: flex;
       list-style: none;
       margin: 15px 20px;
-      .btn {
+      .btn-populars, .btn-evaluated {
         cursor: pointer;
-        background: #032541;
         padding: 10px;
         border: none;
         border-radius: 50px;

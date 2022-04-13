@@ -26,8 +26,8 @@
     <div class="selects">
       <h1 class="title-popular">Os mais populares</h1>
       <div class="botoes">
-        <button class="btn" @click="showPopulars()">Populares</button>
-        <button class="btn" @click="showEvaluated()">Mais Avaliados</button>
+        <button class="btn-populars" @click="showPopulars()">Populares</button>
+        <button class="btn-evaluated" @click="showEvaluated()">Mais Avaliados</button>
       </div>
     </div>
 
@@ -65,13 +65,7 @@ export default {
     }
   },
   methods: {
-    addClassBtn() {
-      let btn = document.querySelector('.btn')
-      console.log(btn)
-      let btnSelected = btn.classList.toggle("actived")
-      console.log(btnSelected)
-      return btnSelected
-    },
+    
     async searchFilm(query) {
       let response = await api.get(`/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
       this.results = response.data.results
@@ -83,16 +77,24 @@ export default {
       this.$router.push({ name: 'details', params: { id } })
     },
     async showEvaluated() {
+      let btnpop = document.querySelector('.btn-populars')
+      btnpop.style.background = '#032541'
+      let btnev = document.querySelector('.btn-evaluated')
+      btnev.style.background = '#5bc98b'
       let response = await api.get('/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       this.showPopular = false
       this.objsCategory.evaluatedFilms = response.data.results
-      this.addClassBtn()
+
     },
     async showPopulars() {
+      let btnpop = document.querySelector('.btn-populars')
+      btnpop.style.background = '#5bc98b'
+      let btnev = document.querySelector('.btn-evaluated')
+      btnev.style.background = '#032541'
       let response = await api.get('/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
       this.objsCategory.popularsFilms = response.data.results
       this.showPopular = true
-      this.addClassBtn()
+    
     },
   },
   mounted(){
