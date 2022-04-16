@@ -16,16 +16,28 @@
         <span>+</span>
         <span>PT-BR</span>
         <span>Sino</span>
-        <span>Perfil</span>
-        <span>Search</span>
+        <button class="account" @click="openAcc">@</button>
       </div>
     </nav>
   </div>
 </template>
 
 <script>
+import { api } from '@/services/api.js'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      account: ''
+    }
+  },
+  methods: {
+    async openAcc() {
+      let response = await api.get(`https://api.themoviedb.org/3/account?api_key=e161437dd0afeb088fc7bc77be4d32bc`)
+      this.account = response
+    }
+  }
 }
 </script>
 
