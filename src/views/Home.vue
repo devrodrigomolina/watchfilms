@@ -67,7 +67,7 @@ export default {
   methods: {
     
     async searchFilm(query) {
-      let response = await api.get(`/search/movie?api_key=e161437dd0afeb088fc7bc77be4d32bc&query=${query}`)
+      let response = await api.get(`/search/movie?&query=${query}`)
       this.results = response.data.results
     },
     async btnSearch(query) {
@@ -81,7 +81,7 @@ export default {
       btnpop.style.background = '#032541'
       let btnev = document.querySelector('.btn-evaluated')
       btnev.style.background = '#5bc98b'
-      let response = await api.get('/movie/top_rated?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
+      let response = await api.get('/movie/top_rated?&language=en-US&page=1')
       this.showPopular = false
       this.objsCategory.evaluatedFilms = response.data.results
 
@@ -91,7 +91,7 @@ export default {
       btnpop.style.background = '#5bc98b'
       let btnev = document.querySelector('.btn-evaluated')
       btnev.style.background = '#032541'
-      let response = await api.get('/movie/popular?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US&page=1')
+      let response = await api.get('/movie/popular?&language=en-US&page=1')
       this.objsCategory.popularsFilms = response.data.results
       this.showPopular = true
     

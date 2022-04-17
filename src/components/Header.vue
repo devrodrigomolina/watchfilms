@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     async openAcc() {
-      let response = await api.get(`https://api.themoviedb.org/3/account?api_key=e161437dd0afeb088fc7bc77be4d32bc`)
+      let response = await api.get(`/account?api_key=e161437dd0afeb088fc7bc77be4d32bc`)
       this.account = response
     }
   }
