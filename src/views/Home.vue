@@ -26,8 +26,8 @@
     <div class="selects">
       <h1 class="title-popular">Os mais populares</h1>
       <div class="botoes">
-        <button class="btn-populars" @click="showPopulars()">Populares</button>
-        <button class="btn-evaluated" @click="showEvaluated()">Mais Avaliados</button>
+        <button :class="{actived: !active}" @click="showPopulars()">Populares</button>
+        <button :class="{actived: active}" @click="showEvaluated()">Mais Avaliados</button>
       </div>
     </div>
 
@@ -57,6 +57,7 @@ export default {
       objFinal: null,
       objsCategory: {popularsFilms: null, evaluatedFilms: null,},
       id: '',
+      active: null,
     }
   },
   watch: {
@@ -65,7 +66,6 @@ export default {
     }
   },
   methods: {
-    
     async searchFilm(query) {
       let response = await api.get(`/search/movie?&query=${query}`)
       this.results = response.data.results
@@ -77,20 +77,13 @@ export default {
       this.$router.push({ name: 'details', params: { id } })
     },
     async showEvaluated() {
-      let btnpop = document.querySelector('.btn-populars')
-      btnpop.style.background = '#032541'
-      let btnev = document.querySelector('.btn-evaluated')
-      btnev.style.background = '#5bc98b'
+      this.active = true
       let response = await api.get('/movie/top_rated?&language=en-US&page=1')
       this.showPopular = false
       this.objsCategory.evaluatedFilms = response.data.results
-
     },
     async showPopulars() {
-      let btnpop = document.querySelector('.btn-populars')
-      btnpop.style.background = '#5bc98b'
-      let btnev = document.querySelector('.btn-evaluated')
-      btnev.style.background = '#032541'
+      this.active = false
       let response = await api.get('/movie/popular?&language=en-US&page=1')
       this.objsCategory.popularsFilms = response.data.results
       this.showPopular = true

@@ -23,7 +23,7 @@
       max-width: 90%;
       display: flex;
       align-items: center;
-      justify-content: end;
+      justify-content: flex-end;
       margin: 0 auto;
       input {
         width: 100%;
@@ -111,7 +111,7 @@
       display: flex;
       list-style: none;
       margin: 15px 20px;
-      .btn-populars, .btn-evaluated {
+      button {
         cursor: pointer;
         padding: 10px;
         border: none;
@@ -121,6 +121,7 @@
         font-size: 12px;
         font-weight: 500;
         transition: all .3s;
+        background: #032541;
       } 
       .actived {
         background: #5bc98b;

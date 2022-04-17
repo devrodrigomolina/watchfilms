@@ -77,6 +77,8 @@
       border-radius: 50px;       
     }
     .infos-elenc {
+      display: flex;
+      flex-direction: column;
       margin: 10px;
       box-shadow: 1px 1px 10px 1px #0216272f;
       border-radius: 10px; 
