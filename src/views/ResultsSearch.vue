@@ -35,6 +35,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped src="@/scss/resultSearch.scss">
+<style lang="scss" src="@/scss/resultsearch.scss" scoped >
 
 </style>

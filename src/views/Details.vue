@@ -1,13 +1,14 @@
 <template>
   <div>
-    <transition name="anim">
     <div class="container-geral" v-for="infos in infosFilm" :key="infos.id">
       <div class="container">
         <div class="container-infos">
           <div class="img-film">
+            <div class="trailer">
+              <button @click="trailerFilm(infos.id)">▶ Trailer</button>
+            </div>
             <img :src="`http://image.tmdb.org/t/p/w500/${infos.poster_path}`" alt="">
           </div>
-
           <div class="infos-film">
             <div class="titulo">
               <h1>{{infos.title}}</h1>
@@ -45,7 +46,11 @@
       </div>
 
     </div>
-    </transition>
+   <div v-if="movieTrailer" class="container-video">
+      <div  class="modal-trailer">
+        <iframe width="960" height="515" :src="`https://www.youtube.com/embed/${movieTrailer[0].key}?autoplay=1`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+   </div>
   </div>
  
 </template>
@@ -58,17 +63,23 @@ export default {
   data() {
     return {
       infosFilm: [],
-      elencFilm: []
+      elencFilm: [],
+      movieTrailer: ''
     }
   },
   methods: {
-    async getInfosFilm(id) {
-      let response = await api.get(`/movie/${id}?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=pt-br`)      
+    async getInfosFilm(movie_id) {
+      let response = await api.get(`/movie/${movie_id}?&language=pt-br`)      
       this.infosFilm.push(response.data)
     },
-    async getElencFilm(id) {
-      let response = await api.get(`/movie/${id}/credits?api_key=e161437dd0afeb088fc7bc77be4d32bc&language=en-US`)
+    async getElencFilm(movie_id) {
+      let response = await api.get(`/movie/${movie_id}/credits?&language=en-US`)
       this.elencFilm.push(response.data)
+    },
+    async trailerFilm(movie_id) {
+      let response = await api.get(`/movie/${movie_id}/videos?&language=en-US`)
+      console.log(response.data.results)
+      this.movieTrailer = response.data.results
     }
   },
   mounted() {
