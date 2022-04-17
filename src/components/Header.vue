@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <ul>
-        <router-link to="/filmes"><li>Filmes</li></router-link>
+        <router-link to="/films"><li>Filmes</li></router-link>
         <router-link to="/series"><li>Séries</li></router-link>
         <router-link to="/pessoas"><li>Pessoas</li></router-link>
         <router-link to="/mais"><li>Mais</li></router-link>
