@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModalTrailer :trailer="movieTrailer"/>
     <div class="container-geral" v-for="infos in infosFilm" :key="infos.id">
       <div class="container">
         <div class="container-infos">
@@ -36,30 +37,31 @@
 
       <div class="titulo-elenc">
         <h1>Elenco Principal</h1>
+       
       </div>
       <div class="elenco">     
-        <div class="infos-elenc" v-for="elenc in elencFilm[0].cast" :key="elenc.id">
+        <div class="infos-elenc" v-for="elenc in elencFilm[0]" :key="elenc.id">
+          
           <img :src="`http://image.tmdb.org/t/p/w500/${elenc.profile_path}`" alt="">
           <p class="elenc-name">{{elenc.original_name}}</p>
           <p class="elenc-chatacter">{{elenc.character}}</p>
         </div>
       </div>
-
     </div>
-   <div v-if="movieTrailer" class="container-video">
-      <div  class="modal-trailer">
-        <iframe width="960" height="515" :src="`https://www.youtube.com/embed/${movieTrailer[0].key}?autoplay=1`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-   </div>
   </div>
  
 </template>
 
 <script>
 import { api } from '@/services/api.js'
+import ModalTrailer from '@/components/ModalTrailer.vue'
 
 export default {
   name: 'Details',
+  props: ['trailer'],
+  components: {
+    ModalTrailer
+  },
   data() {
     return {
       infosFilm: [],
@@ -74,11 +76,10 @@ export default {
     },
     async getElencFilm(movie_id) {
       let response = await api.get(`/movie/${movie_id}/credits?&language=en-US`)
-      this.elencFilm.push(response.data)
+      this.elencFilm.push(response.data.cast)
     },
     async trailerFilm(movie_id) {
       let response = await api.get(`/movie/${movie_id}/videos?&language=en-US`)
-      console.log(response.data.results)
       this.movieTrailer = response.data.results
     }
   },
