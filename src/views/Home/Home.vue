@@ -3,7 +3,7 @@
     <div class="bg-inpt">
       <div class="infos-inpt">
         <h1>Bem-vindo(a).</h1>
-        <h2>Milhões de filmes, séries e pessoas para descobrir. Explore já.</h2>
+        <h2>Milhões de filmes e séries para descobrir. Explore já.</h2>
       </div>
 
       <div class="input-search">
@@ -11,7 +11,7 @@
         <button @click="btnSearch(query)">Search</button>
         {{results2}}
       </div>
-    
+
       <div class="films-search" v-if="query">
         <transition-group name="anim" >
           <div class="results" v-for="result in results" :key="result.id">
