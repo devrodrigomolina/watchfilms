@@ -1,3 +1,6 @@
+@import '@/assets/scss/_colors.scss';
+@import '@/assets/scss/_buttons.scss';
+
 .container {
   max-width: 85%;
   margin: 0 auto;
@@ -15,7 +18,7 @@
       width: 100%;
       text-align: center;
       padding-bottom: 50px;
-      color: white;
+      color: $white-color;
       font-size: 1.3rem;
     }
     .input-search {
@@ -39,19 +42,9 @@
         }
       }
       button {
-        position: absolute;
-        height: 45px;
-        background: linear-gradient(to right,  rgba(30, 213, 170, 0.877), rgba(1, 180, 228, 0.452));
-        cursor: pointer;
-        border-radius: 50px;
-        border: none;
-        width: 10%;
-        font-weight: bold;
-        color: white;
-        font-size: 1rem;
-        transition: all .2s;
+        @include btn-search;
         &:hover {
-          transform: translateX(2deg);
+          transform: perspective(7.5cm) rotateX(5deg) rotateY(-5deg);
         }
       }
     }
@@ -65,7 +58,7 @@
       margin: 0 auto;
       box-shadow: 0 14px 18px rgba(0, 0, 0, 0.336);
       overflow-x: hidden;
-      background: rgb(255, 255, 255);
+      background: $white-color;
       .results {
         display: flex;
         align-items: center;
@@ -87,12 +80,12 @@
         height: 12px;
       }
       &::-webkit-scrollbar-track {
-        background: #ffffff;    
+        background: $white-color;    
         border: 2px solid gray;
         border-radius: 50px; 
       }
       &::-webkit-scrollbar-thumb {
-        background-color: #032541;    
+        background-color: $principal-color;    
         border-radius: 50px;       
       }
     }
@@ -104,7 +97,7 @@
       margin-top: 15px;
     }
     .botoes {
-      border: 2px solid #032541;
+      border: 2px solid $principal-color;
       border-radius: 50px;
       width: 230px;
       justify-content: space-between;
@@ -112,19 +105,10 @@
       list-style: none;
       margin: 15px 20px;
       button {
-        cursor: pointer;
-        padding: 10px;
-        border: none;
-        border-radius: 50px;
-        color: white;
-        text-transform: uppercase;
-        font-size: 12px;
-        font-weight: 500;
-        transition: all .3s;
-        background: #032541;
+        @include btn-selects;
       } 
       .actived {
-        background: #5bc98b;
+        background: linear-gradient(to right,  rgba(30, 213, 170, 0.877), rgba(1, 180, 228, 0.452));
       }
     }
   }
@@ -147,12 +131,12 @@
       height: 12px;
     }
     &::-webkit-scrollbar-track {
-      background: #ffffff;    
+      background: $white-color;    
       border: 2px solid gray;
       border-radius: 50px; 
     }
     &::-webkit-scrollbar-thumb {
-      background-color: #032541;    
+      background-color: $principal-color;    
       border-radius: 50px;       
     }
     .cards-films{
@@ -175,9 +159,10 @@
       }
       .nota {
         margin: 5px auto;
-        background: #5bc98b;
+        background: linear-gradient(to right,  rgba(30, 213, 170, 0.877), rgba(1, 180, 228, 0.452));
+  
         width: 50px;
-        color: white;
+        color: $white-color;
         font-size: 14px;
         border-radius: 20px;
       }

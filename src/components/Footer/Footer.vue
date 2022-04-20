@@ -11,22 +11,5 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.footer {
-  width: 100vw;
-  height: 200px;
-  background: #032038;
-  margin: 60px 0 0 -17px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  position: absolute;
-
-
-  img {
-    width: 150px;
-    padding: 30px;
-  }
-}
+<style scoped lang="scss" src="./footer.scss">
 </style>

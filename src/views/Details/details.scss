@@ -1,3 +1,5 @@
+@import '@/assets/scss/_colors.scss';
+
 .container-geral {
   .img-fundo{
     width: 100vw;
@@ -108,7 +110,7 @@
       border-radius: 50px; 
     }
     &::-webkit-scrollbar-thumb {
-      background-color: #032038;    
+      background-color: $principal-color;    
       border-radius: 50px;       
     }
     .infos-elenc {

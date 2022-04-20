@@ -1,5 +1,8 @@
+@import '@/assets/scss/_colors.scss';
+@import '@/assets/scss/_buttons.scss';
+
 .container-header {
-  background: #032541;
+  background: $principal-color;
   .nav-header {
     display: flex;
     align-items: center;
@@ -11,14 +14,18 @@
     .logo img {
       width: 180px;
     }
-    ul {
+    .nav {
       width: 300px;
       display: flex;
       justify-content: space-between;
       list-style: none;
-      li {
-        color: white;
+      a {
+        @include nav-btn;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
+   
     }
     .itens {    
       color: white;

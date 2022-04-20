@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Details from '../views/Details.vue'
-import ResultsSearch from '../views/ResultsSearch.vue'
-import AllFilms from '../views/AllFilms.vue'
+import Home from '../views/Home/Home.vue'
+import Details from '../views/Details/Details.vue'
+import ResultsSearch from '../views/ResultsSearch/ResultsSearch.vue'
+import AllFilms from '../views/AllFilms/AllFilms.vue'
 
 
 Vue.use(VueRouter)

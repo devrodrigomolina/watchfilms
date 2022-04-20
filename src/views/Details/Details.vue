@@ -54,7 +54,7 @@
 
 <script>
 import { api } from '@/services/api.js'
-import ModalTrailer from '@/components/ModalTrailer.vue'
+import ModalTrailer from '@/components/ModalTrailer/ModalTrailer.vue'
 
 export default {
   name: 'Details',
@@ -90,6 +90,6 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" src="@/scss/details.scss">
+<style scoped lang="scss" src="./details.scss">
 
 </style>

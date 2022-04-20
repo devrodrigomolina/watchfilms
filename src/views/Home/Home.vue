@@ -96,5 +96,5 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" src="@/scss/home.scss">
+<style scoped lang="scss" src="./home.scss">
 </style>

@@ -20,5 +20,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped src="@/scss/modalTrailer.scss">
+<style lang="scss" scoped src="./modalTrailer.scss">
 </style>
