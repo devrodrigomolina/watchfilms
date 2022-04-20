@@ -1,28 +1,21 @@
 @import '@/assets/scss/_colors.scss';
 @import '@/assets/scss/_buttons.scss';
+@import '@/assets/scss/_scrolls.scss';
 
 .container {
   max-width: 85%;
   margin: 0 auto;
   box-shadow: 0 14px 18px rgba(0, 0, 0, 0.2);
   .bg-inpt {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
     padding-top: 100px;
-    margin: 0 auto;
     height: 500px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.623), rgba(6, 13, 77, 0.452)), url('https://www.themoviedb.org/t/p/w1920_and_h600_multi_faces_filter(duotone,032541,01b4e4)/sfjqJDmNqMIImO5khiddb9TARvO.jpg');
     .infos-inpt {
-      width: 100%;
-      text-align: center;
-      padding-bottom: 50px;
+      padding: 50px 0px 50px 80px;
       color: $white-color;
       font-size: 1.3rem;
     }
     .input-search {
-      width: 100%;
       max-width: 90%;
       display: flex;
       align-items: center;
@@ -31,8 +24,8 @@
       input {
         width: 100%;
         outline: none;
+        border-radius: 25px;
         border: none;
-        border-radius: 30px;
         height: 45px;
         font-size: 1.1rem;
         padding-left: 15px;
@@ -43,18 +36,13 @@
       }
       button {
         @include btn-search;
-        &:hover {
-          transform: perspective(7.5cm) rotateX(5deg) rotateY(-5deg);
-        }
       }
     }
     .films-search {
       display: flex;
       flex-direction: column;
-      padding-top: 10px;
       width: 90%;
-      max-height: 200px;
-      text-align: justify;
+      max-height: 170px;
       margin: 0 auto;
       box-shadow: 0 14px 18px rgba(0, 0, 0, 0.336);
       overflow-x: hidden;
@@ -62,32 +50,19 @@
       .results {
         display: flex;
         align-items: center;
-        border-bottom: 1px solid rgba(39, 38, 38, 0.233);
+        border-bottom: 1px solid rgba(39, 38, 38, 0.26);
         img {
-          width: 50px;
-          margin: 7px 0 7px 7px;
+          width: 45px;
+          margin: 5px 0 5px 5px;
           cursor: pointer;
         }
         p {
-          width: 100%;
-          font-size: 1.2rem;
+          font-size: 1.1rem;
           padding-left: 20px;
           cursor: pointer;
         }
       }
-      &::-webkit-scrollbar {
-        width: 10px;    
-        height: 12px;
-      }
-      &::-webkit-scrollbar-track {
-        background: $white-color;    
-        border: 2px solid gray;
-        border-radius: 50px; 
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: $principal-color;    
-        border-radius: 50px;       
-      }
+      @include scrollbars;
     }
   }
   .selects{
@@ -100,9 +75,8 @@
       border: 2px solid $principal-color;
       border-radius: 50px;
       width: 230px;
-      justify-content: space-between;
       display: flex;
-      list-style: none;
+      justify-content: space-between;
       margin: 15px 20px;
       button {
         @include btn-selects;
@@ -113,11 +87,9 @@
     }
   }
   .popular-filmes {
-    display: flex;
-    margin: 0px 20px;
     overflow-x: scroll;
     overflow-y: hidden;
-      .animation-anim {
+    .animation-anim {
       display: flex;
       .anim-enter {
         opacity: 0;
@@ -126,23 +98,8 @@
         transition: opacity 3s;
       }
     }
-    &::-webkit-scrollbar {
-      width: 10px;    
-      height: 12px;
-    }
-    &::-webkit-scrollbar-track {
-      background: $white-color;    
-      border: 2px solid gray;
-      border-radius: 50px; 
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: $principal-color;    
-      border-radius: 50px;       
-    }
+    @include scrollbars;
     .cards-films{
-      background: transparent;
-      border: none;
-      box-shadow: none;
       margin-top: 20px;
       padding-left: 15px;
       transition: all .3s;
@@ -152,15 +109,12 @@
         cursor: pointer;
       }
       p {
-        max-width: 150px;
-        max-height: 55px;
         text-align: center;
         text-transform: capitalize;
       }
       .nota {
         margin: 5px auto;
         background: linear-gradient(to right,  rgba(30, 213, 170, 0.877), rgba(1, 180, 228, 0.452));
-  
         width: 50px;
         color: $white-color;
         font-size: 14px;
