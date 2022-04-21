@@ -20,7 +20,7 @@
       justify-content: space-between;
       list-style: none;
       a {
-        @include nav-btn;
+        @include btn;
         &:hover {
           transform: scale(1.1);
         }

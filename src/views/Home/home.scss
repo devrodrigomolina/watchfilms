@@ -74,12 +74,10 @@
     .botoes {
       border: 2px solid $principal-color;
       border-radius: 50px;
-      width: 230px;
-      display: flex;
-      justify-content: space-between;
+      height: 35px;
       margin: 15px 20px;
       button {
-        @include btn-selects;
+        @include btn;
       } 
       .actived {
         background: linear-gradient(to right,  rgba(30, 213, 170, 0.877), rgba(1, 180, 228, 0.452));
