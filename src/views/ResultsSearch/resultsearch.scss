@@ -7,7 +7,7 @@
     display: flex;
     padding-bottom: 10px;
     img {
-      width: 90px;
+      width: 110px;
       border-radius: 10px 0px 0px 10px;
     }
     .infos-text {
@@ -18,12 +18,11 @@
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 1rem;
         font-weight: 600;
-        line-height: 15px;
       }
       .date {
         padding-top: 4px;
         color: rgba(0, 0, 0, 0.479);
-        font-size: 11px;
+        font-size: 14px;
       }
       .overview {
         padding-top: 30px;
@@ -31,7 +30,6 @@
       }
     }
     &:hover {
-      
       color: #0a5da1;
     }
   }
