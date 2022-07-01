@@ -11,5 +11,22 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" src="./footer.scss">
+<style scoped lang="scss" >
+@import '@/assets/scss/_colors.scss';
+
+.footer {
+  width: 100vw;
+  height: 200px;
+  background: $principal-color;
+  margin: 60px 0 0 -17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white-color;
+  position: absolute;
+  img {
+    width: 150px;
+    padding: 30px;
+  }
+}
 </style>
